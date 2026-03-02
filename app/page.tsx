@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 type CreativeBrief = {
@@ -9,12 +11,12 @@ type CreativeBrief = {
 function translateToCreativeBrief(positioning: string): Promise<CreativeBrief> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      // Simulated translation — replace with real API when ready
       const lower = positioning.toLowerCase();
       resolve({
-        tone: lower.includes("sustainable") || lower.includes("millennial")
-          ? "Warm, authentic, and purpose-driven. Conversational but confident. Avoid corporate jargon."
-          : "Clear, confident, and direct. Professional yet approachable.",
+        tone:
+          lower.includes("sustainable") || lower.includes("millennial")
+            ? "Warm, authentic, and purpose-driven. Conversational but confident. Avoid corporate jargon."
+            : "Clear, confident, and direct. Professional yet approachable.",
         visualDirection:
           "Natural light, earthy tones, and real people over stock. Minimal, clean layouts with ample whitespace. Photography that feels candid and lifestyle-led.",
         messageArchitecture:
@@ -24,7 +26,7 @@ function translateToCreativeBrief(positioning: string): Promise<CreativeBrief> {
   });
 }
 
-export default function App() {
+export default function Home() {
   const [positioning, setPositioning] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CreativeBrief | null>(null);
@@ -51,7 +53,10 @@ export default function App() {
           Turn your positioning statement into a creative brief.
         </p>
 
-        <label htmlFor="positioning" className="block text-sm font-medium text-slate-700 mb-2">
+        <label
+          htmlFor="positioning"
+          className="block text-sm font-medium text-slate-700 mb-2"
+        >
           Positioning statement
         </label>
         <textarea
